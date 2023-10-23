@@ -45,12 +45,7 @@ export default function Header({ isMain }) {
 				</li>
 			</ul>
 
-			<FaBars
-				className='bars'
-				fontSize={22}
-				color={'#333'}
-				onClick={() => dispatch(toggle())}
-			/>
+			<FaBars className='bars' fontSize={22} color={'#333'} onClick={() => dispatch(toggle())} />
 		</header>
 	);
 }

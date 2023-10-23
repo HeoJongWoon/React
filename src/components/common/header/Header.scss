@@ -1,16 +1,16 @@
-header {
-	width: 70vw;
-	padding: 0px 2px;
-	height: 100px;
-	border-bottom: 1px solid #aaa;
+.header {
+	width: 100%;
+	padding: 4vh 10vw;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin: 0 auto;
+	position: relative;
+	background: #1d1d1d;
 
 	h1 {
 		font-weight: bold;
 		font-size: 1.4rem;
+		color: #e1d6c4;
 	}
 
 	ul {
@@ -18,9 +18,15 @@ header {
 		gap: 50px;
 		align-items: center;
 
-		li a {
-			&.active {
-				color: orangered;
+		li {
+			color: #9d958a;
+
+			a.active {
+				color: #e1d6c4;
+			}
+
+			&:hover {
+				transform: scale(1.05);
 			}
 		}
 	}

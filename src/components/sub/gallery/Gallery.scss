@@ -1,41 +1,144 @@
 .Gallery {
-	.picFrame {
+	.aBox {
 		width: 100%;
+		display: flex;
+		justify-content: space-between;
 
-		&::after {
-			content: '';
-			display: block;
-			clear: both;
+		.topBox {
+			width: 25%;
+			display: flex;
+			flex-wrap: wrap;
+			padding: 10px;
+			align-content: flex-start;
+
+			.searchBox {
+				width: 100%;
+				text-align: left;
+				display: flex;
+				justify-content: space-between;
+				padding-bottom: 2rem;
+
+				input {
+					width: 65%;
+				}
+				button {
+					width: 35%;
+					background-color: #1d1d1d;
+					color: #e1d6c4;
+				}
+			}
+			span {
+				font-weight: bold;
+				width: 100%;
+			}
+
+			.buttonWrap {
+				.btnSet {
+					width: 100%;
+
+					button {
+						&.on {
+							font-weight: bold;
+							color: #1d1d1d;
+						}
+						&:hover {
+							transform: scale(1.05);
+						}
+					}
+					.my {
+						color: #888;
+						border: none;
+						width: 100%;
+						text-align: left;
+						padding-left: 0.5rem;
+						background: #f3eee8;
+					}
+
+					.it {
+						color: #888;
+						border: none;
+						width: 100%;
+						text-align: left;
+						padding-left: 0.5rem;
+						background: #f3eee8;
+					}
+				}
+			}
 		}
 
-		article {
-			width: 25%;
-			padding: 10px;
-			float: left;
+		.picFrame {
+			width: 70%;
 
-			.inner {
-				width: 100%;
+			&::after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+			article {
+				width: 33.333%;
 				padding: 10px;
-				background: #fff;
-				box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+				float: left;
 
-				.pic {
+				.inner {
 					width: 100%;
-				}
-				h2 {
-					font: normal 1rem/1.2 'arial';
-					color: #555;
-					margin-top: 10px;
-					margin-bottom: 40px;
-				}
-				.profile {
-					width: 100%;
-					display: flex;
-					align-items: center;
-					gap: 20px;
+					padding: 10px;
+					background: #fff;
+					box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+					transition: 0.5s;
 
-					span {
-						font-size: 0.8rem;
+					&:hover {
+						transform: scale(1.05);
+					}
+
+					.pic {
+						width: 100%;
+						position: relative;
+
+						img {
+							width: 100%;
+							height: 100%;
+							object-fit: cover;
+							position: absolute;
+							top: 0;
+
+							&:nth-of-type(1) {
+								filter: blur(20px) saturate(1.3);
+								transform: scale(0.8) translateY(0%);
+								opacity: 0;
+								transition: 0.5s;
+							}
+							&:nth-of-type(2) {
+								filter: saturate(0);
+								position: relative;
+							}
+						}
+						&:hover {
+							img:nth-of-type(1) {
+								opacity: 0.5;
+								transform: scale(0.8) translateY(5%);
+							}
+
+							img:nth-of-type(2) {
+								filter: saturate(1);
+								position: relative;
+							}
+						}
+					}
+					h2 {
+						font: normal 1rem/1.2 'arial';
+						color: #555;
+						margin-top: 10px;
+						margin-bottom: 10px;
+					}
+					.profile {
+						width: 100%;
+						display: flex;
+						align-items: center;
+						gap: 20px;
+
+						span {
+							font-size: 0.8rem;
+						}
 					}
 				}
 			}
@@ -43,29 +146,34 @@
 	}
 }
 
-.laptop {
-	.Gallery {
-		.picFrame {
-			article {
-				width: 32%;
-			}
-		}
-	}
-}
-.tablet {
-	.Gallery {
-		.picFrame {
-			article {
-				width: 48%;
-			}
-		}
-	}
-}
+.tablet,
 .mobile {
 	.Gallery {
-		.picFrame {
-			article {
+		.aBox {
+			flex-wrap: wrap;
+			.topBox {
 				width: 100%;
+				margin-bottom: 50px;
+			}
+
+			.picFrame {
+				width: 100%;
+
+				article {
+					width: 50%;
+				}
+			}
+		}
+	}
+}
+
+.mobile {
+	.Gallery {
+		.aBox {
+			.picFrame {
+				article {
+					width: 100%;
+				}
 			}
 		}
 	}

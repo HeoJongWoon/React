@@ -1,25 +1,54 @@
 footer {
-	width: 70vw;
-	margin: 0px auto;
-	padding: 60px 0;
-	border-top: 1px solid #888;
-	display: flex;
-	justify-content: space-between;
+	padding: 50px 10vw;
+	background: #1d1d1d;
 
-	h1 {
+	.top {
 		display: flex;
-		align-items: center;
-		font: bold 1.5rem/1 'nanum myeongjo';
-		opacity: 0.9;
-	}
-	p {
-		font: normal 1rem/1 'nanum myeongjo';
-		opacity: 0.9;
-	}
+		justify-content: space-between;
 
-	ul {
+		h1 {
+			color: #e1d6c4;
+		}
+
+		.footerMenu {
+			width: 65%;
+			// border: solid 1px red;
+			display: flex;
+			justify-content: space-between;
+
+			ul {
+				li {
+					color: #9d958a;
+					margin-bottom: 10px;
+					position: relative;
+					&:hover {
+						transform: scale(1.1);
+						cursor: pointer;
+						font-weight: bolder;
+						color: #e1d6c4;
+					}
+					h3 {
+						font-size: 1.3rem;
+						color: #9d958a;
+						margin-bottom: 15px;
+					}
+				}
+			}
+		}
+	}
+	.lower {
 		display: flex;
-		gap: 30px;
-		opacity: 0.8;
+		justify-content: space-between;
+		margin-top: 40px;
+
+		P {
+			color: #9d958a;
+		}
+
+		li * {
+			&:hover {
+				scale: 1.1;
+			}
+		}
 	}
 }

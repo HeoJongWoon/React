@@ -8,6 +8,7 @@ const path = process.env.PUBLIC_URL;
 export default function Department() {
 	const [Department, setDepartment] = useState([]);
 	const [History, setHistory] = useState([]);
+	const [Subpage, setSubpage] = useState([]);
 
 	useEffect(() => {
 		fetch(`${path}/DB/department.json`)
@@ -25,6 +26,12 @@ export default function Department() {
 				setHistory(json.history);
 			})
 			.catch((err) => console.log(err));
+
+		fetch(`${path}/DB/subpage.json`)
+			.then((data) => data.json())
+			.then((json) => {
+				setSubpage(json.subbox);
+			});
 	}, []);
 
 	return (
@@ -48,12 +55,12 @@ export default function Department() {
 			</section>
 			<section id='memberBox'>
 				<h2>Members</h2>
-
 				<div className='con'>
 					{Department.map((member, idx) => {
 						return (
 							<article key={idx}>
 								<div className='pic'>
+									<img src={`${path}/img/${member.pic}`} alt={member.name} />
 									<img src={`${path}/img/${member.pic}`} alt={member.name} />
 								</div>
 								<h3>{member.name}</h3>
@@ -61,6 +68,25 @@ export default function Department() {
 							</article>
 						);
 					})}
+				</div>
+			</section>
+			<section id='subBox'>
+				<h2>Sub</h2>
+				<div className='con'>
+					<div className='subBox'>
+						{Subpage.map((subbox, idx) => {
+							return (
+								<article key={idx}>
+									<div className='pic'>
+										<img src={`${path}/img/${subbox.pic}`} alt={subbox.name} />
+										<img src={`${path}/img/${subbox.pic}`} alt={subbox.name} />
+									</div>
+									<h2>{subbox.date}</h2>
+									<p>{subbox.txt}</p>
+								</article>
+							);
+						})}
+					</div>
 				</div>
 			</section>
 		</Layout>

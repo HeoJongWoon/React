@@ -1,26 +1,53 @@
-import { Link } from 'react-router-dom';
-import { FaYoutube, FaTwitter } from 'react-icons/fa6';
+import React from 'react';
 import './Footer.scss';
 
-export default function Footer() {
+const Footer = () => {
 	return (
 		<footer>
-			<h1>DCODELAB</h1>
+			<div className='top'>
+				<h1>DECODELAB</h1>
+				<div className='footerMenu'>
+					<ul>
+						<li>
+							<h3>COMMUNITY</h3>
+						</li>
 
-			<p>2023 DCODELAB &copy; ALL RIGHTS RESERVED.</p>
-
-			<ul>
-				<li>
-					<Link to='/'>
-						<FaYoutube size={20} />
-					</Link>
-				</li>
-				<li>
-					<Link to='/'>
-						<FaTwitter size={20} />
-					</Link>
-				</li>
-			</ul>
+						<li>About</li>
+						<li>Submit on issue</li>
+						<li>GitHub Repo</li>
+						<li>Slack</li>
+					</ul>
+					<ul>
+						<li>
+							<h3>GETTING STARTED</h3>
+						</li>
+						<li>Introduction</li>
+						<li>Documentation</li>
+						<li>Usage</li>
+						<li>Globals</li>
+						<li>Elements</li>
+						<li>Collections</li>
+						<li>Themes</li>
+					</ul>
+					<ul>
+						<li>
+							<h3>RESOURSES</h3>
+						</li>
+						<li>API</li>
+						<li>Form</li>
+						<li>Visibility</li>
+						<li>Accesssibility</li>
+						<li>Community</li>
+						<li>DesignDefined</li>
+						<li>Marketplace</li>
+					</ul>
+				</div>
+			</div>
+			<div className='lower'>
+				<p>2023 DCODELAB &copy; ALL RIGHTS RESERVED.</p>
+			</div>
 		</footer>
 	);
-}
+};
+
+export default Footer;

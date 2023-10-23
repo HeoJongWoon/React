@@ -19,7 +19,8 @@ export default function Gallery() {
 	const refBtnSet = useRef(null);
 	const [ActiveURL, setActiveURL] = useState('');
 	const [IsUser, setIsUser] = useState(true);
-	const my_id = '164021883@N04';
+	const [IsFilter, setIsFilter] = useState(false);
+	const my_id = '199283169@N04';
 	const [Opt, setOpt] = useState({ type: 'user', id: my_id });
 	const { data: Pics, isSuccess } = useFlickrQuery(Opt);
 
@@ -73,69 +74,76 @@ export default function Gallery() {
 	return (
 		<>
 			<Layout title={'Gallery'}>
-				<div className='searchBox'>
-					<form onSubmit={handleSubmit}>
-						<input
-							ref={refInput}
-							type='text'
-							placeholder='검색어를 입력하세요'
-						/>
-						<button>검색</button>
-					</form>
-				</div>
+				<div className='aBox'>
+					<section className='topBox'>
+						<div className='searchBox'>
+							<form onSubmit={handleSubmit}>
+								<input ref={refInput} type='text' placeholder='검색어를 입력하세요' />
+								<button>검색</button>
+							</form>
+						</div>
 
-				<div className='btnSet' ref={refBtnSet}>
-					<button className='on' onClick={handleClickMy}>
-						My Gallery
-					</button>
+						<span onClick={() => setIsFilter(!IsFilter)}>FILTER</span>
+						{IsFilter && (
+							<div className='buttonWrap'>
+								<div className='btnSet' ref={refBtnSet}>
+									<button className='my on' onClick={handleClickMy}>
+										- My Gallery
+									</button>
 
-					<button onClick={handleClickInterest}>Interest Gallery</button>
-				</div>
+									<button className='it' onClick={handleClickInterest}>
+										- Interest Gallery
+									</button>
+								</div>
+							</div>
+						)}
+					</section>
 
-				<div className='picFrame'>
-					<Masonry
-						elementType={'div'}
-						options={{ transitionDuration: '0.5s' }}
-						disableImagesLoaded={false}
-						updateOnEachImageLoad={false}
-					>
-						{isSuccess &&
-							Pics.map((data, idx) => {
-								return (
-									<article key={idx}>
-										<div className='inner'>
-											<img
-												className='pic'
-												src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
-												alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
-												onClick={(e) => {
-													setActiveURL(e.target.getAttribute('alt'));
-													dispatch(open());
-												}}
-											/>
-											<h2>{data.title}</h2>
+					<div className='picFrame'>
+						<Masonry elementType={'div'} options={{ transitionDuration: '0.5s' }} disableImagesLoaded={false} updateOnEachImageLoad={false}>
+							{isSuccess &&
+								Pics.map((data, idx) => {
+									return (
+										<article key={idx}>
+											<div className='inner'>
+												<div className='pic'>
+													<img
+														src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
+														alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
+														onClick={(e) => {
+															setActiveURL(e.target.getAttribute('alt'));
+															dispatch(open());
+														}}
+													/>
+													<img
+														src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
+														alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
+														onClick={(e) => {
+															setActiveURL(e.target.getAttribute('alt'));
+															dispatch(open());
+														}}
+													/>
+												</div>
+												<h2>{data.title}</h2>
 
-											<div className='profile'>
-												<img
-													src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
-													alt={data.owner}
-													onError={(e) => {
-														e.target.setAttribute(
-															'src',
-															'https://www.flickr.com/images/buddyicon.gif'
-														);
-													}}
-												/>
-												<span onClick={handleClickProfile}>{data.owner}</span>
+												<div className='profile'>
+													<img
+														src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
+														alt={data.owner}
+														onError={(e) => {
+															e.target.setAttribute('src', 'https://www.flickr.com/images/buddyicon.gif');
+														}}
+													/>
+													<span onClick={handleClickProfile}>{data.owner}</span>
+												</div>
 											</div>
-										</div>
-									</article>
-								);
-							})}
-					</Masonry>
+										</article>
+									);
+								})}
+						</Masonry>
+					</div>
 				</div>
 			</Layout>
-
 			<Modal>
 				<img src={ActiveURL} alt='img' />
 			</Modal>

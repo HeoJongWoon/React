@@ -14,21 +14,6 @@
       "name": "Emily",
       "position": "UI Designer",
       "pic": "member3.jpg"
-    },
-    {
-      "name": "Chloe",
-      "position": "Front-end Developer",
-      "pic": "member4.jpg"
-    },
-    {
-      "name": "Emma",
-      "position": "Back-end Developer",
-      "pic": "member5.jpg"
-    },
-    {
-      "name": "Zoe",
-      "position": "Project Manager",
-      "pic": "member6.jpg"
     }
   ]
 }
