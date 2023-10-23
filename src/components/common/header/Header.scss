@@ -31,15 +31,18 @@
 		}
 	}
 	.bars {
-		color: #e1d6c4;
 		display: none;
+	}
+
+	.btnTheme {
+		cursor: pointer;
+		color: red;
 	}
 }
 
 .tablet,
 .mobile {
 	.header {
-		width: 80vw;
 		ul {
 			display: none;
 		}
